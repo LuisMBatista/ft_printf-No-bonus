@@ -7,7 +7,6 @@
 
 To use `libftprintf`, clone the repository 
 ```sh
-make
 git clone https://github.com/LuisMBatista/ft_printf-No-bonus.git
 ```
 
