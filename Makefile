@@ -3,36 +3,39 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lumiguel <lumiguel@student.42.fr>          +#+  +:+       +#+         #
+#    By: lumiguel <lumiguel@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 15:40:08 by lumiguel          #+#    #+#              #
-#    Updated: 2023/11/25 17:40:02 by lumiguel         ###   ########.fr        #
+#    Updated: 2024/11/05 13:02:37 by lumiguel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# Variables
 NAME = libftprintf.a
-CFLAGS = -Wall -Wextra -Werror
 CC = cc
-SRC = ft_printf16.c ft_putstr.c ft_putchar.c ft_printnbr.c ft_putnbr_u.c ft_strchr.c ft_printf.c
-SRCBOBJ = $(SRC:.c=.o)
 
+CFLAGS = -g -Wall -Wextra -Werror\
+
+SRC_DIR = src
+OBJ_DIR = obj
+SRC = $(SRC_DIR)/ft_printf.c $(SRC_DIR)/ft_printf16.c $(SRC_DIR)/ft_printnbr.c $(SRC_DIR)/ft_putchar.c \
+	$(SRC_DIR)/ft_putnbr_u.c $(SRC_DIR)/ft_putstr.c $(SRC_DIR)/ft_strchr.c
+OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Rules
 all: $(NAME)
 
-$(NAME): $(SRCBOBJ)
-	ar rcs $(NAME) $(SRCBOBJ)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	rm -f $(SRCBOBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
-	
 
 re: fclean all
-
-
-.PHONY: all clean fclean re
