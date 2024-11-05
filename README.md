@@ -10,7 +10,6 @@ To use `libftprintf`, clone the repository
 make
 git clone https://github.com/LuisMBatista/ft_printf-No-bonus.git
 
-Make sure you have `make` and a C compiler like `gcc` or `cc` installed on your system.
 
 ## Compiling the Library
 
