@@ -6,14 +6,15 @@
 ## Getting Started
 
 To use `libftprintf`, clone the repository 
-```bash
+```sh
 make
 git clone https://github.com/LuisMBatista/ft_printf-No-bonus.git
-
+```
 
 ## Compiling the Library
 
 To compile the library, use the following command in the project’s root directory:
 
-```bash
+```sh
 make
+```
